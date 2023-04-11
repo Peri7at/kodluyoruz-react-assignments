@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 
 function Form({ todos, addTodo }) {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState([]);
 
   useEffect(() => {
-    setForm({});
+    setForm({ todo: "" });
   }, [todos]);
 
   const onChangeInput = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value, completed: false });
   };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    //if (form.todos === "") return false;
+    if (form.todo === "") return false;
     addTodo([...todos, form]);
   };
 
@@ -21,11 +21,11 @@ function Form({ todos, addTodo }) {
     <div>
       <form onSubmit={onFormSubmit}>
         <input
-          name="todos"
+          name="todo"
           class="new-todo"
           placeholder="What needs to be done?"
-          value={form.todos}
           onChange={onChangeInput}
+          value={form.todo}
           autoFocus
         />
         <button type="submit"></button>

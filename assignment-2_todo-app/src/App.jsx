@@ -7,8 +7,8 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [todos, setTodos] = useState([
-    { todos: "Learn React" },
-    { todos: "Have a life!" },
+    { todo: "Learn React", completed: false },
+    { todo: "Have a life!", completed: false },
   ]);
 
   useEffect(() => {
